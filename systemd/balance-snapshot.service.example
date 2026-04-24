@@ -1,0 +1,15 @@
+[Unit]
+Description=Balance Snapshot API
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/balance-snapshot-api
+EnvironmentFile=/opt/balance-snapshot-api/.env
+ExecStart=/opt/balance-snapshot-api/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8080
+Restart=always
+RestartSec=5
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target
